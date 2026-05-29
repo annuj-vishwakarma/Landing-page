@@ -18,8 +18,8 @@
 
     body {
       font-family: 'Open Sans', sans-serif;
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: 15px;
+      line-height: 1.7;
       color: #2d2d2d;
       background: #f7f7f7;
     }
@@ -133,7 +133,7 @@
 
     /* ── CONTENT WRAP ── */
     .page-wrap {
-      max-width: 880px;
+      max-width: 1100px;
       margin: 32px auto 60px;
       background: #fff;
       border-radius: 10px;
@@ -355,7 +355,7 @@
 
     /* ── SECTION HEADINGS ── */
     h2.wp-h2 {
-      font-size: 23px;
+      font-size: 22px;
       font-weight: 700;
       color: #111;
       margin: 36px 0 14px;
@@ -388,7 +388,7 @@
     }
 
     h3.wp-h3 {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
       color: #111;
       margin: 14px 0 5px;
@@ -418,7 +418,7 @@
 
     /* ── PARAGRAPHS ── */
     .wp-p {
-      font-size: 15.5px;
+      font-size: 15px;
       color: #3a3a3a;
       margin-bottom: 14px;
       line-height: 1.78;
@@ -935,6 +935,226 @@
         margin: 0 0 22px;
       }
     }
+
+    /* ── ADVICE BOXES (LOOK FOR / AVOID) ── */
+    .advice-wrap {
+      margin: 26px 0 22px;
+    }
+
+    .advice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 760px) {
+      .advice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .advice-box {
+      border: 3px solid transparent;
+      border-radius: 6px;
+      padding: 18px 20px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.95));
+    }
+
+    .advice-good {
+      border-color: #3cb043;
+      background: linear-gradient(180deg, #f6fff5, #ffffff);
+    }
+
+    .advice-bad {
+      border-color: #e23b3b;
+      background: linear-gradient(180deg, #fff6f6, #ffffff);
+    }
+
+    .advice-box h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      text-align: left;
+      color: #111;
+    }
+
+    .advice-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .advice-item {
+      border-top: 1px solid rgba(0,0,0,0.03);
+      padding: 10px 0;
+    }
+
+    .advice-item:first-of-type { border-top: none; }
+
+    .advice-item .toggle {
+      width: 100%;
+      background: transparent;
+      border: none;
+      text-align: left;
+      font-weight: 600;
+      color: #2a2a2a;
+      padding: 6px 2px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 15px;
+    }
+
+    .advice-item .toggle .icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      font-weight: 700;
+      color: inherit;
+    }
+
+    .advice-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 260ms ease, padding 200ms ease;
+      font-size: 14.5px;
+      color: #444;
+      padding: 0 2px;
+      line-height: 1.6;
+    }
+
+    .advice-item.open .advice-content {
+      padding-top: 10px;
+      max-height: 420px;
+    }
+    html { scroll-behavior: smooth; }
+
+    .btn-jump {
+      display: inline-block;
+      background: linear-gradient(135deg,#43d97f,#2fae5a);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 24px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 3px 10px rgba(66,188,119,0.18);
+      transition: transform .12s, box-shadow .12s;
+      margin: 6px 0;
+    }
+
+    .btn-jump:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(66,188,119,0.22); }
+
+    @media(max-width:680px){
+      .btn-jump { display: block; width: 100%; text-align: center; padding: 12px 16px; border-radius: 8px; }
+    }
+
+    /* ── PRODUCT CARD (WINNER) ── */
+    .product-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr 320px;
+      gap: 28px;
+      align-items: start;
+      padding: 18px 14px;
+      margin: 12px 0 18px;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #eee;
+    }
+
+    .product-card .pc-left { display:flex; align-items:center; justify-content:center; }
+    .product-card .pc-left img { width: 100%; max-width: 220px; border-radius: 6px; display: block; }
+
+    .product-card .pc-mid { padding: 6px 12px; display:flex; flex-direction:column; justify-content:center; }
+
+    .stat { margin-bottom: 12px; }
+    .stat-label { font-weight:700; color:#222; margin-bottom:6px; font-size:14px; }
+    .stat-row { display:flex; align-items:center; gap:10px; }
+    .stat-bar { flex:1; height:12px; background:#eee; border-radius:10px; overflow:hidden; }
+    .stat-fill { width:0%; height:100%; background:#43a047; border-radius:10px 0 0 10px; transition: width 900ms cubic-bezier(.22,.9,.32,1); }
+    .stat-percent { width:40px; text-align:right; font-weight:700; color:#1d1d1d; font-size:13px; }
+
+    .product-cta { padding: 18px; border-radius:8px; text-align:center; border-left: 6px solid #ffd700; }
+    .product-cta .grade { font-size:40px; font-weight:800; color:#132033; margin:6px 0; }
+    .product-cta .price { font-size:24px; font-weight:800; color:#132033; margin:8px 0; }
+    .product-cta .stars { margin:8px 0; }
+    .product-cta .note { font-size:13px; color:#666; margin-top:8px; }
+
+    @media(max-width:980px){
+      .product-card { grid-template-columns: 1fr 1fr; }
+      .product-cta { grid-column: 1 / -1; order: 3; }
+    }
+
+    @media(max-width:680px){
+      .product-card { grid-template-columns: 1fr; }
+      .product-cta { order: 3; border-left: none; border-top: 6px solid #ffd700; }
+      .product-card .pc-left img { max-width: 100%; }
+    }
+
+    /* ── STICKY BOTTOM BANNER (updated design) ── */
+    .sticky-banner {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      bottom: 18px;
+      background: linear-gradient(90deg,#ffffffee 0%, #f6f9ffee 100%);
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: 0 10px 30px rgba(19,32,51,0.12);
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      z-index: 9999;
+      max-width: 980px;
+      width: calc(100% - 48px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 260ms cubic-bezier(.2,.9,.25,1), transform 260ms cubic-bezier(.2,.9,.25,1);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(19,32,51,0.06);
+    }
+
+    .sticky-banner.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .sticky-banner .sb-text { font-weight:700; color:#112031; font-size:15px; }
+    .sticky-banner .sb-cta { margin-left:10px; display:inline-block; text-decoration:none; color:#fff; background:linear-gradient(90deg,#ff6aa2,#ff9a5b); padding:10px 14px; border-radius:8px; font-weight:700; box-shadow:0 6px 18px rgba(255,106,162,0.14); }
+
+    @media(max-width:680px){
+      .sticky-banner { bottom: 12px; width: calc(100% - 28px); padding: 10px 12px; gap:10px; }
+      .sticky-banner .sb-text { display:none; }
+      .sticky-banner .sb-cta { padding:10px 12px; font-size:14px; }
+    }
+    
+    /* Desktop banner: centered 70% width */
+    @media(min-width:981px){
+      .sticky-banner{
+        position: fixed !important;
+        left: 50% !important;
+        transform: translateX(-50%) translateY(0) !important;
+        width: 70% !important;
+        max-width: 1100px !important;
+        border-radius: 12px !important;
+        padding: 14px 48px !important;
+        bottom: 0 !important;
+        justify-content: space-between !important;
+      }
+      .sticky-banner .sb-text { font-size:17px; }
+      .sticky-banner .sb-cta { margin-left:0; }
+    }
+    /* Footer disclaimer layout */
+    .footer-disclaimer {
+      width: 75%;
+      margin: 14px auto 0;
+      color: #9b9b9b;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    @media(max-width:680px){ .footer-disclaimer { width: 94%; } }
   </style>
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
@@ -1002,7 +1222,7 @@
         </div>
       </div>
 
-      <h2 class="wp-h2">Top 5 LED Facial Beauty Masks of 2025</h2>
+      <h2 id="top-five" class="wp-h2">Top 5 LED Facial Beauty Masks of 2025</h2>
 
       <p class="wp-p">After learning about the many benefits of LED facial masks <strong>(reduced acne, improved skin
           tone, increased collagen production, and minimized fine lines)</strong>, we decided to explore these beauty
@@ -1015,45 +1235,122 @@
         criteria: <strong>results, cost, ease of use, and safety for home use.</strong></p>
       <p class="wp-p">Below is our full breakdown and <strong>our top picks</strong> after the full test:</p>
 
-      
+      <div style="text-align:center;margin:12px 0 18px;">
+        <a href="#top-product" class="btn-jump">Take me to the winning product</a>
+      </div>
+
+      <!-- ADVICE: WHAT TO LOOK FOR / AVOID -->
+      <div class="advice-wrap">
+        <div class="advice-grid">
+          <section class="advice-box advice-good">
+            <h2>What You Should Look For</h2>
+            <ul class="advice-list">
+              <li class="advice-item open">
+                <button class="toggle" aria-expanded="true">Clinically Proven Light Wavelengths <span class="icon">−</span></button>
+                <div class="advice-content">Choose masks that publish wavelength specs (e.g. 630–660nm for red, 415nm for blue) and have supporting clinical evidence or lab testing.</div>
+              </li>
+              <li class="advice-item">
+                <button class="toggle" aria-expanded="false">Full-Face Coverage and Even Light Distribution <span class="icon">+</span></button>
+                <div class="advice-content">Look for masks with close-fitting panels or reflectors that ensure every area of the face receives an even dose of light.</div>
+              </li>
+              <li class="advice-item">
+                <button class="toggle" aria-expanded="false">Comfort and Safety <span class="icon">+</span></button>
+                <div class="advice-content">Soft, skin-safe materials and reliable safety features (timers, auto-shutoff) make regular use feasible and low-risk.</div>
+              </li>
+              <li class="advice-item">
+                <button class="toggle" aria-expanded="false">Adjustable Intensity and Treatment Modes <span class="icon">+</span></button>
+                <div class="advice-content">Variable intensity and preset programs allow you to tailor treatments to your skin sensitivity and goals.</div>
+              </li>
+              <li class="advice-item">
+                <button class="toggle" aria-expanded="false">Ease of Use and Battery Life <span class="icon">+</span></button>
+                <div class="advice-content">A user-friendly design with clear controls, rechargeable battery and minimal setup speeds up daily use and improves adherence.</div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="advice-box advice-bad">
+            <h2>What You Should Avoid</h2>
+            <ul class="advice-list">
+              <li class="advice-item">
+                <button class="toggle" aria-expanded="false">Lack of Medical-Grade or Skin-Friendly Materials <span class="icon">+</span></button>
+                <div class="advice-content">Avoid masks using hard, cheap plastics or unknown silicones that trap heat or irritate skin during repeated use.</div>
+              </li>
+              <li class="advice-item">
+                <button class="toggle" aria-expanded="false">No Information on Wavelengths or Light Intensity <span class="icon">+</span></button>
+                <div class="advice-content">If a product doesn't publish wavelengths or irradiance, there's no way to compare it to clinically proven devices — steer clear.</div>
+              </li>
+              <li class="advice-item">
+                <button class="toggle" aria-expanded="false">Uncomfortable or Poorly Fitting Design <span class="icon">+</span></button>
+                <div class="advice-content">Masks that shift, pinch, or block breathing are impractical — look for ergonomic designs that stay in place comfortably.</div>
+              </li>
+              <li class="advice-item">
+                <button class="toggle" aria-expanded="false">Overly Complicated Controls or Setup <span class="icon">+</span></button>
+                <div class="advice-content">Complex pairing, hidden settings, or unclear instructions increase frustration and reduce likelihood of consistent use.</div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
 
       <hr class="wp-sep">
 
       <!-- ============= #1 AURELINE AUREGLOW FACIAL THERAPY MASK ============= -->
-      <h2 class="wp-h2">
+      <h2 id="top-product" class="wp-h2">
         <a href="https://mettend-hamous.xyz/click">#1 LED Facial Beauty Mask by Aureline Aureglow Facial therapy mask.</a>
         <span class="rank1-badge">⭐ Editor's Choice</span>
       </h2>
 
-      <div class="wp-block-image">
-        <a href="https://mettend-hamous.xyz/click">
-          <img src="./images/Aureglowmask.jpg" alt="Aureline Aureglow Facial therapy mask LED Light Therapy" style="max-width:380px;">
-        </a>
+      <div class="product-card">
+        <div class="pc-left">
+          <a href="https://mettend-hamous.xyz/click">
+            <img src="./images/Aureglowmask.jpg" alt="Aureline Aureglow Facial therapy mask LED Light Therapy">
+          </a>
+        </div>
+        <div class="pc-mid">
+          <h3 class="wp-h3" style="text-align:left;margin-bottom:8px;"><a href="https://mettend-hamous.xyz/click">Aureline Aureglow Facial therapy mask - 7 Colour LED Light Therapy</a></h3>
+          <div class="rating-line" style="text-align:left;margin-bottom:14px;">Overall rating 4.8/5</div>
+
+          <div class="stat">
+            <div class="stat-label">Light Effectiveness</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="97" style="width:0%"></div></div><div class="stat-percent">97%</div></div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">Skin Comfort and Fit</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="95" style="width:0%"></div></div><div class="stat-percent">95%</div></div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">Ease of Use</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="98" style="width:0%"></div></div><div class="stat-percent">98%</div></div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">Material Quality</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="95" style="width:0%"></div></div><div class="stat-percent">95%</div></div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">Affordability</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="98" style="width:0%"></div></div><div class="stat-percent">98%</div></div>
+          </div>
+        </div>
+
+        <aside class="product-cta">
+          <div style="display:flex;flex-direction:row;align-items:center;justify-content:center;gap:8px;">
+            <img src="./badge-1.png" alt="#1" style="height:46px;" onerror="this.style.display='none'">
+          </div>
+          <div class="grade">A+</div>
+          <div class="price">£119</div>
+          <div class="stars"><img src="./five-stars.png" alt="4.8 stars" style="height:26px;" onerror="this.outerHTML='<span style=&quot;font-size:22px;color:#f5a623;&quot;>★★★★★</span>'"></div>
+          <div class="note">Exceptional !<br>Over 25000+ Reviews</div>
+          <div style="margin-top:12px;"><a href="https://mettend-hamous.xyz/click" class="btn-visit">Visit The Website ➜</a></div>
+          <div class="note" style="margin-top:10px;">Get £50 Gift Card on all purchases. Offer is valid for a limited time.</div>
+        </aside>
       </div>
 
-      <div class="stars-wrap">
-        <a href="">
-          <img src="./five-stars.png" alt="4.8 stars"
-            onerror="this.outerHTML='<span style=&quot;font-size:26px;color:#f5a623;&quot;>★★★★☆</span>'">
-        </a>
-      </div>
-
-      <h3 class="wp-h3"><a href="https://mettend-hamous.xyz/click">Aureline Aureglow Facial therapy mask - 7 Colour LED Light Therapy</a>
-      </h3>
-      <p class="rating-line">Overall rating 4.8/5</p>
-      <a href="https://mettend-hamous.xyz/click" class="btn-view-reviews">View Aureline Aureglow Facial therapy mask Reviews</a>
-
-      <p class="wp-p">The Aureline Aureglow Facial therapy mask is our top-rated LED mask for 2026. It consistently replicates professional LED
-        chamber results across all tested skin types — the best investment any skincare routine can make. Engineered
-        with proven technology, this device delivers exceptional results at an unbeatable price point.</p>
-      <p class="wp-p">Featuring <strong>advanced 7-colour LED spectrum technology</strong>, the Aureline Aureglow Facial therapy mask
-        delivers results clinically equivalent to salon treatments costing over $300 per session. With consistent use,
-        users report <strong>visible collagen uplift in just 14 days</strong> and sustained improvements in skin tone
-        and texture.</p>
-      <p class="wp-p">What truly sets the Aureline Aureglow Facial therapy mask apart is its remarkable quality and effectiveness at an affordable price point. This professional-grade LED therapy device is now accessible
-        to beauty enthusiasts everywhere, eliminating expensive salon treatments from your skincare routine.</p>
-      <p class="wp-p">Backed by clinical research and trusted by thousands of users across the globe, the Aureline Aureglow Facial therapy mask
-        represents outstanding value for premium at-home LED light therapy.</p>
+        <!-- Sentinel to detect when user scrolls past the first product -->
+        <div id="first-sentinel" style="position:relative; width:1px; height:1px; overflow:hidden;"></div>
 
       <div class="pros-cons-wrap">
         <div class="pros-col">
@@ -1088,34 +1385,44 @@
       <!-- ============= #2 CURRENTBODY ============= -->
       <h2 class="wp-h2">#2 CurrentBody LED Mask</h2>
 
-      <div class="wp-block-image">
-        <a href="https://mettend-hamous.xyz/click">
-          <img src="./current-body-mask.jpg" alt="CurrentBody LED Mask" style="max-width:340px;">
-        </a>
+      <div class="product-card">
+        <div class="pc-left">
+          <a href="https://mettend-hamous.xyz/click"><img src="./current-body-mask.jpg" alt="CurrentBody LED Mask"></a>
+        </div>
+        <div class="pc-mid">
+          <h3 class="wp-h3" style="text-align:left;margin-bottom:8px;">CurrentBody LED Mask</h3>
+          <div class="rating-line" style="text-align:left;margin-bottom:14px;">Overall rating 4.3/5</div>
+
+          <div class="stat">
+            <div class="stat-label">Light Effectiveness</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="86" style="width:0%"></div></div><div class="stat-percent">86%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Skin Comfort and Fit</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="84" style="width:0%"></div></div><div class="stat-percent">84%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Ease of Use</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="85" style="width:0%"></div></div><div class="stat-percent">85%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Material Quality</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="82" style="width:0%"></div></div><div class="stat-percent">82%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Affordability</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="68" style="width:0%"></div></div><div class="stat-percent">68%</div></div>
+          </div>
+        </div>
+
+        <aside class="product-cta">
+          <div class="grade">A</div>
+          <div class="price">£312</div>
+          <div class="stars"><img src="./45stars.png" alt="4.5 stars" style="height:26px;"></div>
+          <div class="note"></div>
+          <div style="margin-top:12px;"><a href="https://mettend-hamous.xyz/click" class="btn-visit">Visit The Website ➜</a></div>
+        </aside>
       </div>
-
-      <div class="stars-wrap">
-        <img src="./45stars.png" alt="4.5 stars"
-          onerror="this.outerHTML='<span style=&quot;font-size:24px;color:#f5a623;&quot;>★★★★½</span>';">
-      </div>
-
-      <h3 class="wp-h3">CurrentBody LED Mask</h3>
-      <p class="rating-line">Overall rating 4.3/5</p>
-
-      <a href="https://mettend-hamous.xyz/click" class="btn-view-reviews">Learn More</a>
-
-      <p class="wp-p">The LED Mask from CurrentBody offers an effective and safe at-home light therapy solution with a
-        hefty <strong>price tag of £312.</strong></p>
-      <p class="wp-p">The LED Mask from CurrentBody claims to reduce wrinkles by 24% in just 4 weeks using red and
-        near-infrared LED light. Its Pillow Technology ensures that all areas of the face are covered for maximum
-        results.</p>
-      <p class="wp-p">According to user feedback, 97% reported that their skin looked brighter and fresher after using
-        the mask. The treatment time is quick, taking only 10 minutes.</p>
-      <p class="wp-p">The device is used by over 500,000 people in 80 countries, reflecting its popularity and
-        widespread trust.</p>
-      <p class="wp-p"><strong>Overall,</strong> despite these impressive claims, the CurrentBody LED Mask, priced at
-        £312, might not offer the best value for money, and its ease of use could fall short compared to some
-        alternatives.</p>
 
       <div class="pros-cons-wrap">
         <div class="pros-col">
@@ -1147,32 +1454,44 @@
       <!-- ============= #3 OMNILUX ============= -->
       <h2 class="wp-h2">#3 Omnilux LED Face Mask</h2>
 
-      <div class="wp-block-image">
-        <a href="https://mettend-hamous.xyz/click">
-          <img src="./omnilux_contour.jpg" alt="Omnilux LED Face Mask" style="max-width:340px;">
-        </a>
+      <div class="product-card">
+        <div class="pc-left">
+          <a href="https://mettend-hamous.xyz/click"><img src="./omnilux_contour.jpg" alt="Omnilux LED Face Mask"></a>
+        </div>
+        <div class="pc-mid">
+          <h3 class="wp-h3" style="text-align:left;margin-bottom:8px;">Omnilux LED Face Mask</h3>
+          <div class="rating-line" style="text-align:left;margin-bottom:14px;">Overall rating 4.0/5</div>
+
+          <div class="stat">
+            <div class="stat-label">Light Effectiveness</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="88" style="width:0%"></div></div><div class="stat-percent">88%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Skin Comfort and Fit</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="86" style="width:0%"></div></div><div class="stat-percent">86%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Ease of Use</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="82" style="width:0%"></div></div><div class="stat-percent">82%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Material Quality</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="84" style="width:0%"></div></div><div class="stat-percent">84%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Affordability</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="60" style="width:0%"></div></div><div class="stat-percent">60%</div></div>
+          </div>
+        </div>
+
+        <aside class="product-cta">
+          <div class="grade">A</div>
+          <div class="price">£348</div>
+          <div class="stars"><img src="./4stars.png" alt="4 stars" style="height:26px;"></div>
+          <div class="note"></div>
+          <div style="margin-top:12px;"><a href="https://mettend-hamous.xyz/click" class="btn-visit">Visit The Website ➜</a></div>
+        </aside>
       </div>
-
-      <div class="stars-wrap">
-        <img src="./4stars.png" alt="4 stars"
-          onerror="this.outerHTML='<span style=&quot;font-size:24px;color:#f5a623;&quot;>★★★★</span>';">
-      </div>
-
-      <h3 class="wp-h3">Omnilux LED Face Mask</h3>
-      <p class="rating-line">Overall rating 4.0/5</p>
-
-      <a href="https://mettend-hamous.xyz/click" class="btn-view-reviews">Learn More</a>
-
-      <p class="wp-p">When it comes to household names, Omnilux is at the top of the list.</p>
-      <p class="wp-p">The Omnilux LED Face Mask, priced at a hefty <strong>£348</strong>, promises impressive results
-        but may not be worth the investment. It uses red and near-infrared LED light to target wrinkles, aiming for
-        visible improvements in just a few weeks.</p>
-      <p class="wp-p">Despite the high cost, many users have praised the mask for its effectiveness, noting noticeable
-        improvements in their skin's appearance after consistent use. <strong>The device is well-regarded for its
-          comfortable fit and ease of use.</strong></p>
-      <p class="wp-p"><strong>While it may be a significant investment</strong>, the Omnilux LED Face Mask delivers
-        professional-grade results at home, making it a worthwhile option for those seeking high-quality skincare
-        solutions.</p>
 
       <div class="pros-cons-wrap">
         <div class="pros-col">
@@ -1207,31 +1526,44 @@
       <!-- ============= #4 JOVS ============= -->
       <h2 class="wp-h2">#4 JOVS Light Therapy Mask</h2>
 
-      <div class="wp-block-image">
-        <a href="https://mettend-hamous.xyz/click">
-          <img src="./jovs-light.png" alt="JOVS Light Therapy Mask" style="max-width:340px;">
-        </a>
+      <div class="product-card">
+        <div class="pc-left">
+          <a href="https://mettend-hamous.xyz/click"><img src="./jovs-light.png" alt="JOVS Light Therapy Mask"></a>
+        </div>
+        <div class="pc-mid">
+          <h3 class="wp-h3" style="text-align:left;margin-bottom:8px;">JOVS Light Therapy Mask</h3>
+          <div class="rating-line" style="text-align:left;margin-bottom:14px;">Overall rating 3.8/5</div>
+
+          <div class="stat">
+            <div class="stat-label">Light Effectiveness</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="78" style="width:0%"></div></div><div class="stat-percent">78%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Skin Comfort and Fit</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="76" style="width:0%"></div></div><div class="stat-percent">76%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Ease of Use</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="74" style="width:0%"></div></div><div class="stat-percent">74%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Material Quality</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="79" style="width:0%"></div></div><div class="stat-percent">79%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Affordability</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="22" style="width:0%"></div></div><div class="stat-percent">22%</div></div>
+          </div>
+        </div>
+
+        <aside class="product-cta">
+          <div class="grade">B+</div>
+          <div class="price">£719</div>
+          <div class="stars"><img src="./35stars.png" alt="3.5 stars" style="height:26px;"></div>
+          <div class="note"></div>
+          <div style="margin-top:12px;"><a href="https://mettend-hamous.xyz/click" class="btn-visit">Visit The Website ➜</a></div>
+        </aside>
       </div>
-
-      <div class="stars-wrap">
-        <img src="./35stars.png" alt="3.5 stars"
-          onerror="this.outerHTML='<span style=&quot;font-size:24px;color:#f5a623;&quot;>★★★½</span>';">
-      </div>
-
-      <h3 class="wp-h3">JOVS Light Therapy Mask</h3>
-      <p class="rating-line">Overall rating 3.8/5</p>
-
-      <a href="https://mettend-hamous.xyz/click" class="btn-view-reviews">Learn More</a>
-
-      <p class="wp-p">The JOVS Light Therapy Mask, <strong>priced at a steep £719</strong>, offers an advanced at-home
-        skincare solution using red and near-infrared LED light technology. This mask aims to reduce wrinkles, improve
-        skin texture, and promote a youthful glow.</p>
-      <p class="wp-p">Despite its high price, the JOVS mask has received positive feedback for its effectiveness. Users
-        have reported significant improvements in their skin's appearance, including reduced fine lines and a brighter
-        complexion. The mask's comprehensive design ensures full-face coverage, and its treatments are quick and easy to
-        incorporate into daily routines.</p>
-      <p class="wp-p">While the cost is considerable, the JOVS Light Therapy Mask stands out for its professional-grade
-        results and advanced features, making it a luxurious but effective option for serious skincare enthusiasts.</p>
 
       <div class="pros-cons-wrap">
         <div class="pros-col">
@@ -1266,30 +1598,44 @@
       <!-- ============= #5 MEGELIN ============= -->
       <h2 class="wp-h2">#5 Megelin LED Face Mask</h2>
 
-      <div class="wp-block-image">
-        <a href="https://mettend-hamous.xyz/click">
-          <img src="./816045_5CLargeImage_5C1_533x.png" alt="Megelin LED Face Mask" style="max-width:320px;">
-        </a>
+      <div class="product-card">
+        <div class="pc-left">
+          <a href="https://mettend-hamous.xyz/click"><img src="./816045_5CLargeImage_5C1_533x.png" alt="Megelin LED Face Mask"></a>
+        </div>
+        <div class="pc-mid">
+          <h3 class="wp-h3" style="text-align:left;margin-bottom:8px;">Megelin LED Face Mask</h3>
+          <div class="rating-line" style="text-align:left;margin-bottom:14px;">Overall rating 3/5</div>
+
+          <div class="stat">
+            <div class="stat-label">Light Effectiveness</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="60" style="width:0%"></div></div><div class="stat-percent">60%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Skin Comfort and Fit</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="62" style="width:0%"></div></div><div class="stat-percent">62%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Ease of Use</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="58" style="width:0%"></div></div><div class="stat-percent">58%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Material Quality</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="55" style="width:0%"></div></div><div class="stat-percent">55%</div></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Affordability</div>
+            <div class="stat-row"><div class="stat-bar"><div class="stat-fill" data-percent="78" style="width:0%"></div></div><div class="stat-percent">78%</div></div>
+          </div>
+        </div>
+
+        <aside class="product-cta">
+          <div class="grade">B-</div>
+          <div class="price">£199</div>
+          <div class="stars"><img src="./3stars.png" alt="3 stars" style="height:26px;"></div>
+          <div class="note"></div>
+          <div style="margin-top:12px;"><a href="https://mettend-hamous.xyz/click" class="btn-visit">Visit The Website ➜</a></div>
+        </aside>
       </div>
-
-      <div class="stars-wrap">
-        <img src="./3stars.png" alt="3 stars"
-          onerror="this.outerHTML='<span style=&quot;font-size:24px;color:#f5a623;&quot;>★★★</span>';">
-      </div>
-
-      <h3 class="wp-h3">Megelin LED Face Mask</h3>
-      <p class="rating-line">Overall rating 3/5</p>
-
-      <a href="https://mettend-hamous.xyz/click" class="btn-view-reviews">Learn More</a>
-
-      <p class="wp-p">The Megelin LED Face Mask offers a comprehensive skincare solution, utilizing advanced LED light
-        therapy to target various skin concerns. Priced competitively, this mask aims to reduce fine lines and wrinkles,
-        diminish the appearance of pigmentation and redness, and alleviate active acne, blemishes, and inflammation.</p>
-      <p class="wp-p">Some users have reported minimal improvements even after prolonged use, questioning the
-        effectiveness of the seven-color light therapy. Additionally, the mask can be uncomfortable to wear for extended
-        periods, and its overall build quality has been criticised by some.</p>
-      <p class="wp-p"><strong>While it offers some good features, it falls short of our top contenders in overall
-          performance.</strong></p>
 
       <div class="pros-cons-wrap">
         <div class="pros-col">
@@ -1322,7 +1668,7 @@
 
       <!-- OUR TOP PICKS -->
       <div class="top-picks-section">
-        <h2 class="wp-h2" style="border-bottom:none;padding-bottom:0;margin-top:0;">Our Top Picks</h2>
+        <h2 id="our-top-picks" class="wp-h2" style="border-bottom:none;padding-bottom:0;margin-top:0;">Our Top Picks</h2>
         <a href="https://mettend-hamous.xyz/click">
           <img src="./images/Aureglowmask.jpg" alt="Aureline Aureglow Facial therapy mask 7 Colour LED Light Therapy">
         </a>
@@ -1332,7 +1678,7 @@
         <br>
         <div style="margin: 12px 0; font-size: 18px; font-weight: 700; color: #e91e8c;">🎉 50% Off - Limited Time Offer!</div>
         <a href="https://mettend-hamous.xyz/click" class="btn-visit">Visit the Website</a>
-      </div>
+        </div>
 
     </div><!-- .page-wrap -->
   </main>
@@ -1347,8 +1693,130 @@
       <a href="#">Privacy Policy</a>
       <a href="#">Advertiser Disclosure</a>
     </nav>
+    <div class="footer-disclaimer">
+      <p>This website is intended to help users make informed and secure decisions online by providing information about a variety of products, services, and brands. Certain details, including pricing, promotions, and special offers, are supplied directly by our partners and may be updated or changed at any time without prior notice.</p>
+      <p>While we strive to ensure all information is accurate and up to date through careful research and review, the content provided on this website is for general informational purposes only and should not be considered legal, financial, medical, or professional advice. Users are encouraged to conduct their own research and consult qualified professionals where appropriate before making any decisions.</p>
+    </div>
+
     <p class="footer-copy">Copyright 2026 © <strong>Expert Beauty Picks</strong></p>
   </footer>
+
+  <script>
+    // Accordion toggles for the advice boxes
+    (function(){
+      var toggles = document.querySelectorAll('.advice-item .toggle');
+      toggles.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var item = btn.closest('.advice-item');
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          // collapse if open, open if closed
+          if(expanded){
+            btn.setAttribute('aria-expanded','false');
+            item.classList.remove('open');
+            btn.querySelector('.icon').textContent = '+';
+          } else {
+            btn.setAttribute('aria-expanded','true');
+            item.classList.add('open');
+            btn.querySelector('.icon').textContent = '−';
+          }
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // Animate stat bars when they scroll into view
+    (function(){
+      var bars = Array.prototype.slice.call(document.querySelectorAll('.stat-fill'));
+      if(!bars.length) return;
+
+      function animateBar(bar, idx){
+        var pct = parseInt(bar.getAttribute('data-percent') || '0', 10);
+        // small stagger
+        setTimeout(function(){ bar.style.width = pct + '%'; }, idx * 100);
+      }
+
+      if('IntersectionObserver' in window){
+        var io = new IntersectionObserver(function(entries, obs){
+          entries.forEach(function(entry){
+            if(entry.isIntersecting){
+              var bar = entry.target;
+              var idx = bars.indexOf(bar);
+              animateBar(bar, idx);
+              obs.unobserve(bar);
+            }
+          });
+        }, {threshold: 0.35});
+
+        bars.forEach(function(b){ io.observe(b); });
+      } else {
+        // fallback: animate all
+        bars.forEach(function(b,i){ animateBar(b,i); });
+      }
+    })();
+  </script>
+
+  <!-- Sticky banner (moved to body root for reliable fixed positioning) -->
+  <div id="sticky-banner" class="sticky-banner" aria-hidden="true">
+    <div class="sb-text">Checkout the winning product and get 50% Discount</div>
+    <a href="#top-product" class="btn-visit sb-cta">Take me to the winning mask</a>
+  </div>
+
+  <script>
+    // Show sticky banner only when user scrolls DOWN past the top product; hide when scrolling UP
+    // or when certain sections (top product, our top picks, or footer) are visible to avoid overlap.
+    (function(){
+      var top = document.getElementById('top-product');
+      var picks = document.getElementById('our-top-picks');
+      var banner = document.getElementById('sticky-banner');
+      var footer = document.querySelector('footer.site-footer');
+      if(!top || !banner) return;
+
+      function show(){ banner.classList.add('show'); banner.setAttribute('aria-hidden','false'); }
+      function hide(){ banner.classList.remove('show'); banner.setAttribute('aria-hidden','true'); }
+
+      // Track scroll direction
+      var lastScroll = window.scrollY || 0;
+      var direction = 'down';
+      window.addEventListener('scroll', function(){
+        var y = window.scrollY || 0;
+        direction = (y > lastScroll) ? 'down' : 'up';
+        lastScroll = y;
+      }, {passive:true});
+
+      if('IntersectionObserver' in window){
+        var topVisible = false;
+        var picksVisible = false;
+        var footerVisible = false;
+        var obs = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(entry.target === top){ topVisible = entry.isIntersecting; }
+            if(picks && entry.target === picks){ picksVisible = entry.isIntersecting; }
+            if(footer && entry.target === footer){ footerVisible = entry.isIntersecting; }
+          });
+          // Hide if any of the key sections are visible (prevents overlapping content/footer)
+          if(topVisible || picksVisible || footerVisible){ hide(); return; }
+          // Otherwise show only when scrolling down
+          if(direction === 'down') show(); else hide();
+        }, {threshold: 0.05});
+        obs.observe(top);
+        if(picks) obs.observe(picks);
+        if(footer) obs.observe(footer);
+      } else {
+        // fallback: combine rect checks with direction for both elements
+        window.addEventListener('scroll', function(){
+          var topRect = top.getBoundingClientRect();
+          var visibleTop = topRect.bottom > 0 && topRect.top < window.innerHeight;
+          var visiblePicks = false;
+          var visibleFooter = false;
+          if(picks){ var picksRect = picks.getBoundingClientRect(); visiblePicks = picksRect.bottom > 0 && picksRect.top < window.innerHeight; }
+          if(footer){ var footerRect = footer.getBoundingClientRect(); visibleFooter = footerRect.bottom > 0 && footerRect.top < window.innerHeight; }
+          if(visibleTop || visiblePicks || visibleFooter){ hide(); return; }
+          if(direction === 'down') show(); else hide();
+        }, {passive:true});
+      }
+    })();
+  </script>
 
 </body>
 
