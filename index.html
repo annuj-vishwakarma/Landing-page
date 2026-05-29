@@ -1383,7 +1383,7 @@
       <hr class="wp-sep">
 
       <!-- ============= #2 CURRENTBODY ============= -->
-      <h2 class="wp-h2">#2 CurrentBody LED Mask</h2>
+      <h2 id="currentbody" class="wp-h2">#2 CurrentBody LED Mask</h2>
 
       <div class="product-card">
         <div class="pc-left">
@@ -1763,58 +1763,39 @@
   </div>
 
   <script>
-    // Show sticky banner only when user scrolls DOWN past the top product; hide when scrolling UP
-    // or when certain sections (top product, our top picks, or footer) are visible to avoid overlap.
+    // Show sticky banner only when viewport is between the
+    // `#2 CurrentBody LED Mask` heading and the `.top-picks-section`.
     (function(){
-      var top = document.getElementById('top-product');
+      var startEl = document.getElementById('currentbody');
       var picks = document.getElementById('our-top-picks');
       var banner = document.getElementById('sticky-banner');
-      var footer = document.querySelector('footer.site-footer');
-      if(!top || !banner) return;
+      if(!startEl || !picks || !banner) return;
 
       function show(){ banner.classList.add('show'); banner.setAttribute('aria-hidden','false'); }
       function hide(){ banner.classList.remove('show'); banner.setAttribute('aria-hidden','true'); }
 
-      // Track scroll direction
-      var lastScroll = window.scrollY || 0;
-      var direction = 'down';
-      window.addEventListener('scroll', function(){
-        var y = window.scrollY || 0;
-        direction = (y > lastScroll) ? 'down' : 'up';
-        lastScroll = y;
-      }, {passive:true});
-
-      if('IntersectionObserver' in window){
-        var topVisible = false;
-        var picksVisible = false;
-        var footerVisible = false;
-        var obs = new IntersectionObserver(function(entries){
-          entries.forEach(function(entry){
-            if(entry.target === top){ topVisible = entry.isIntersecting; }
-            if(picks && entry.target === picks){ picksVisible = entry.isIntersecting; }
-            if(footer && entry.target === footer){ footerVisible = entry.isIntersecting; }
-          });
-          // Hide if any of the key sections are visible (prevents overlapping content/footer)
-          if(topVisible || picksVisible || footerVisible){ hide(); return; }
-          // Otherwise show only when scrolling down
-          if(direction === 'down') show(); else hide();
-        }, {threshold: 0.05});
-        obs.observe(top);
-        if(picks) obs.observe(picks);
-        if(footer) obs.observe(footer);
-      } else {
-        // fallback: combine rect checks with direction for both elements
-        window.addEventListener('scroll', function(){
-          var topRect = top.getBoundingClientRect();
-          var visibleTop = topRect.bottom > 0 && topRect.top < window.innerHeight;
-          var visiblePicks = false;
-          var visibleFooter = false;
-          if(picks){ var picksRect = picks.getBoundingClientRect(); visiblePicks = picksRect.bottom > 0 && picksRect.top < window.innerHeight; }
-          if(footer){ var footerRect = footer.getBoundingClientRect(); visibleFooter = footerRect.bottom > 0 && footerRect.top < window.innerHeight; }
-          if(visibleTop || visiblePicks || visibleFooter){ hide(); return; }
-          if(direction === 'down') show(); else hide();
-        }, {passive:true});
+      function inRange(){
+        var start = startEl.getBoundingClientRect().top + window.scrollY;
+        var end = picks.getBoundingClientRect().top + window.scrollY;
+        var middle = window.scrollY + (window.innerHeight / 2);
+        return middle >= start && middle < end;
       }
+
+      var ticking = false;
+      function onScroll(){
+        if(!ticking){
+          window.requestAnimationFrame(function(){
+            if(inRange()) show(); else hide();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, {passive:true});
+      window.addEventListener('resize', onScroll);
+      // initialize visibility
+      onScroll();
     })();
   </script>
 
