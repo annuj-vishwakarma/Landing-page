@@ -1195,8 +1195,23 @@
 
       <h1 class="entry-title">Best LED Face Masks 2025: Tested &amp; Reviewed Comparisons</h1>
       <ul class="post-meta">
-        <li>Last updated – November 2025</li>
+        <li id="last-updated">Last updated – <span id="last-updated-text">November 2025</span></li>
       </ul>
+        <script>
+        (function(){
+          const el = document.getElementById('last-updated-text');
+          if(!el) return;
+          const d = new Date();
+          d.setDate(d.getDate() - 2);
+          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          try {
+            el.textContent = d.toLocaleDateString(undefined, options);
+          } catch (e) {
+            const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            el.textContent = d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+          }
+        })();
+        </script>
 
       <!-- Hero banner -->
       <div class="wp-block-image">
