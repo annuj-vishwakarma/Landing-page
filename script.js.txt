@@ -1,0 +1,113 @@
+<script>
+(() => {
+    const API_URL = "YOUR_API_URL";
+
+    const sessionId = crypto.randomUUID();
+    const startTime = Date.now();
+
+    let maxScroll = 0;
+    let checkoutReached = false;
+
+    function getParam(name) {
+        return new URLSearchParams(window.location.search).get(name);
+    }
+
+    function getFingerprint() {
+        return {
+            screenWidth: screen.width,
+            screenHeight: screen.height,
+            colorDepth: screen.colorDepth,
+            language: navigator.language,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            platform: navigator.platform,
+            hardwareConcurrency: navigator.hardwareConcurrency,
+            deviceMemory: navigator.deviceMemory || null,
+            userAgent: navigator.userAgent
+        };
+    }
+
+    function getPayload() {
+        return {
+            sessionId,
+
+            timestamp: new Date().toISOString(),
+
+            page: window.location.href,
+
+            referrer: document.referrer,
+
+            gclid: getParam("gclid"),
+
+            utm_source: getParam("utm_source"),
+            utm_medium: getParam("utm_medium"),
+            utm_campaign: getParam("utm_campaign"),
+            utm_term: getParam("utm_term"),
+            utm_content: getParam("utm_content"),
+
+            fingerprint: getFingerprint(),
+
+            maxScroll,
+
+            checkoutReached
+        };
+    }
+
+    function send(endpoint, payload) {
+        navigator.sendBeacon(
+            `${API_URL}${endpoint}`,
+            JSON.stringify(payload)
+        );
+    }
+
+    window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY;
+
+        const docHeight =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
+
+        const percent =
+            docHeight > 0
+                ? Math.round((scrollTop / docHeight) * 100)
+                : 100;
+
+        if (percent > maxScroll) {
+            maxScroll = percent;
+        }
+    });
+
+    document.addEventListener("click", (e) => {
+        const target = e.target.closest("a");
+
+        if (!target) return;
+
+        const href = target.href || "";
+
+        if (
+            href.includes("/checkout") ||
+            href.includes("shopify.com") ||
+            href.includes("cart")
+        ) {
+            checkoutReached = true;
+
+            send("/checkout", {
+                sessionId,
+                timestamp: new Date().toISOString(),
+                href
+            });
+        }
+    });
+
+    send("/visit", getPayload());
+
+    window.addEventListener("beforeunload", () => {
+        send("/exit", {
+            sessionId,
+            duration: Date.now() - startTime,
+            maxScroll,
+            checkoutReached,
+            timestamp: new Date().toISOString()
+        });
+    });
+})();
+</script>
